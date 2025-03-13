@@ -7,7 +7,8 @@
     "src/assets/**",
     "build/**",
     "server/**",
-    "src/lib/vendor/css/normalize.css"
+    "src/lib/vendor/css/normalize.css",
+    "dist/**"
   ],
   "rules": {
     "at-rule-no-unknown": [
