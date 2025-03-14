@@ -122,44 +122,44 @@
       keymap.of([...standardKeymap, ...historyKeymap]),
       TEMPORAL_THEME({ isDark, copyable }),
       syntaxHighlighting(TEMPORAL_SYNTAX, { fallback: true }),
-      // indentUnit.of('  '),
-      // closeBrackets(),
-      // autocompletion(),
-      // indentOnInput(),
-      // bracketMatching(),
+      indentUnit.of('  '),
+      closeBrackets(),
+      autocompletion(),
+      indentOnInput(),
+      bracketMatching(),
       EditorState.readOnly.of(!editable),
       EditorView.editable.of(editable),
       EditorView.contentAttributes.of({ 'aria-label': label }),
-      // lineBreakReplacer,
+      lineBreakReplacer,
     ];
 
-    // if (language === 'json') {
-    //   extensions.push(json());
-    // }
+    if (language === 'json') {
+      extensions.push(json());
+    }
 
-    // if (language === 'shell') {
-    //   extensions.push(StreamLanguage.define(shell));
-    // }
+    if (language === 'shell') {
+      extensions.push(StreamLanguage.define(shell));
+    }
 
-    // if (!inline) {
-    //   extensions.push(EditorView.lineWrapping);
-    // }
+    if (!inline) {
+      extensions.push(EditorView.lineWrapping);
+    }
 
-    // if (!inline && !editable) {
-    //   extensions.push(foldGutter());
-    // }
+    if (!inline && !editable) {
+      extensions.push(foldGutter());
+    }
 
-    // if (minHeight || maxHeight) {
-    //   extensions.push(
-    //     EditorView.theme({
-    //       '&': {
-    //         ...(minHeight ? { 'min-height': `${minHeight}px` } : {}),
-    //         ...(maxHeight ? { 'max-height': `${maxHeight}px` } : {}),
-    //       },
-    //     }),
-    //   );
-    //   extensions.push(EditorView.contentAttributes.of({ tabindex: '0' }));
-    // }
+    if (minHeight || maxHeight) {
+      extensions.push(
+        EditorView.theme({
+          '&': {
+            ...(minHeight ? { 'min-height': `${minHeight}px` } : {}),
+            ...(maxHeight ? { 'max-height': `${maxHeight}px` } : {}),
+          },
+        }),
+      );
+      extensions.push(EditorView.contentAttributes.of({ tabindex: '0' }));
+    }
 
     return EditorState.create({
       doc: value,
